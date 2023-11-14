@@ -1,0 +1,37 @@
+.calc-box {
+    background: pink;
+    width: 430px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-box {
+    background: yellow;
+    height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.screen {
+    background: yellow;
+    height: 120px;
+    width: 400px;
+}
+
+.btn {
+    height: 75px;
+    width: 100px;
+    margin: 0px;
+}
