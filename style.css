@@ -35,3 +35,9 @@
     width: 100px;
     margin: 0px;
 }
+
+.clickDisplay {
+    background: rgb(128, 128, 128);
+    height: 50px;
+    font-size: 32px;
+}
