@@ -10,13 +10,33 @@ function operate(num1, operator, num2) {
     }
 }
 
-function calculate() {
+function calculate(btn_text, displayText, clickDisplay, n) {
+    let operators = ['+', '-', '*', '/']
+    for(let i=0; i<4; i++) {
+        let str = displayText.substring(1,n)
+        if(str.includes(operators[i])) {
+            let j = str.indexOf(operators[i]) + 1
+            let num1 = parseInt( displayText.substring(0, j), 10 )
+            let num2 = parseInt( displayText.substring(j+1, n), 10 )
+        
+            let result = operate(num1, operators[i], num2)
+            if(btn_text !== '=') {
+                clickDisplay.textContent = result + btn_text
+            } else {
+                clickDisplay.textContent = result
+            }
+        }
+    }
+}
+
+function display() {
     let btns = document.querySelectorAll('.btn')
     btns.forEach((btn) => {
         btn.addEventListener('click', () => {
             let btn_text = btn.textContent
             let clickDisplay = document.querySelector('.clickDisplay')
-            let displayText = clickDisplay.textContent, n = displayText.length
+            let displayText = clickDisplay.textContent
+            let n = displayText.length
 
             if(!isNaN(btn_text)) {
                 clickDisplay.textContent += btn_text
@@ -37,22 +57,7 @@ function calculate() {
                     clickDisplay.textContent += btn_text
                 }
                 else if( n>2 && !isNaN(displayText[n-1])) {
-                    let operators = ['+', '-', '*', '/']
-                    for(let i=0; i<4; i++) {
-                        let str = displayText.substring(1,n)
-                        if(str.includes(operators[i])) {
-                            let j = str.indexOf(operators[i]) + 1
-                            let num1 = parseInt( displayText.substring(0, j), 10 )
-                            let num2 = parseInt( displayText.substring(j+1, n), 10 )
-        
-                            let result = operate(num1, operators[i], num2)
-                            if(btn_text !== '=') {
-                                clickDisplay.textContent = result + btn_text
-                            } else {
-                                clickDisplay.textContent = result
-                            }
-                        }
-                    }
+                    calculate(btn_text, displayText, clickDisplay, n)
                 }
             }
 
@@ -76,44 +81,15 @@ function calculate() {
                     }
                 }
                 else if ( !isNaN(displayText[n-1]) ) {
-                    let operators = ['+', '-', '*', '/']
-                    for(let i=0; i<4; i++) {
-                        let str = displayText.substring(1,n)
-                        if(str.includes(operators[i])) {
-                            let j = str.indexOf(operators[i]) + 1
-                            let num1 = parseInt( displayText.substring(0, j), 10 )
-                            let num2 = parseInt( displayText.substring(j+1, n), 10 )
-    
-                            let result = operate(num1, operators[i], num2)
-                            if(btn_text !== '=') {
-                                clickDisplay.textContent = result + btn_text
-                            } else {
-                                clickDisplay.textContent = result
-                            }
-                        }
-                    }
+                    calculate(btn_text, displayText, clickDisplay, n)
                 }
             }
+
             else if( btn_text === '=' && !isNaN(displayText[n-1]) ) {
-                let operators = ['+', '-', '*', '/']
-                for(let i=0; i<4; i++) {
-                    let str = displayText.substring(1,n)
-                    if(str.includes(operators[i])) {
-                        let j = str.indexOf(operators[i]) + 1
-                        let num1 = parseInt( displayText.substring(0, j), 10 )
-                        let num2 = parseInt( displayText.substring(j+1, n), 10 )
-    
-                        let result = operate(num1, operators[i], num2)
-                        if(btn_text !== '=') {
-                            clickDisplay.textContent = result + btn_text
-                        } else {
-                            clickDisplay.textContent = result
-                        }
-                    }
-                }
+                calculate(btn_text, displayText, clickDisplay, n)
             }
         })
     })
 }
 
-calculate()
+display()
