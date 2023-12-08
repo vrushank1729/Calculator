@@ -1,7 +1,7 @@
 .calc-box {
     background: pink;
     width: 430px;
-    height: 575px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -16,7 +16,7 @@
 
 .button-box {
     background: yellow;
-    height: 375px;
+    height: 300px;
     width: 400px;
     display: flex;
     flex-direction: row;
@@ -28,6 +28,9 @@
     background: yellow;
     height: 120px;
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .btn {
@@ -38,6 +41,6 @@
 
 .clickDisplay {
     background: rgb(128, 128, 128);
-    height: 50px;
-    font-size: 32px;
+    height: 90px;
+    font-size: 45px;
 }
